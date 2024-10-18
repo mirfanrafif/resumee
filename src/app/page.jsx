@@ -4,6 +4,7 @@ import {
   Dribbble,
   FileStack,
   Github,
+  Globe,
   Hotel,
   Instagram,
   Linkedin,
@@ -20,7 +21,7 @@ export default function Home() {
         <img
           src="https://avatars.githubusercontent.com/u/43906580?v=4"
           alt="Avatar"
-          className="h-24 w-24 rounded-full"
+          className="w-12 h-12 lg:h-24 lg:w-24 rounded-full"
         />
 
         <div>
@@ -50,7 +51,10 @@ export default function Home() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="font-bold">Socials</h2>
+        <div className="flex flex-row gap-2">
+          <Globe size={16} />
+          <h2 className="font-bold">Socials</h2>
+        </div>
         <div className="grid grid-cols-3 gap-2">
           {profile.socials.map((social, index) => (
             <a
