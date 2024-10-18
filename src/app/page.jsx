@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   Book,
   Construction,
   Dribbble,
@@ -62,10 +63,13 @@ export default function Home() {
               href={social.url}
               target="_blank"
               rel="noreferrer"
-              className="flex flex-row items-center gap-2 underline"
+              className="group flex flex-row items-center gap-2 underline"
             >
               {social.icon}
               <span>{social.name}</span>
+              <div className="opacity-0 group-hover:opacity-100 -translate-x-4 transition-all duration-200 group-hover:translate-x-0">
+                <ArrowRight size={16} />
+              </div>
             </a>
           ))}
         </div>
