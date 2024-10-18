@@ -1,10 +1,9 @@
-import localFont from "next/font/local";
 import "./globals.css";
 import { Afacad } from "next/font/google";
 
 const afacad = Afacad({
   variable: "--font-afacad",
-  weight: "variable",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 

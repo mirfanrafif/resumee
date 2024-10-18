@@ -1,6 +1,8 @@
 import {
   Book,
   Construction,
+  Dribbble,
+  FileStack,
   Github,
   Hotel,
   Instagram,
@@ -13,7 +15,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="font-[family-name:var(--font-afacad)] max-w-[1024px] mx-auto my-8 space-y-8">
+    <div className="font-[family-name:var(--font-afacad)] max-w-[1024px] mx-auto my-8 space-y-8 px-4">
       <div className="flex flex-row gap-4 items-center">
         <img
           src="https://avatars.githubusercontent.com/u/43906580?v=4"
@@ -37,7 +39,7 @@ export default function Home() {
 
       <div className="space-y-4">
         <div className="flex flex-row gap-2 items-center">
-          <Book size={16} />
+          <FileStack size={16} />
           <h2 className="font-bold">Main Stack</h2>
         </div>
         <div className="grid grid-cols-3 gap-2">
@@ -182,6 +184,11 @@ const profile = {
       icon: <Instagram size={16} />,
       name: "Instagram",
       url: "https://www.instagram.com/mirfanrafif/",
+    },
+    {
+      icon: <Dribbble size={16} />,
+      name: "Dribbble",
+      url: "https://www.dribbble.com/mirfanrafif/",
     },
   ],
   education: [
