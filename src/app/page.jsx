@@ -51,7 +51,7 @@ export default function Home() {
       </div>
 
       <div className="space-y-4">
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row gap-2 items-center">
           <Globe size={16} />
           <h2 className="font-bold">Socials</h2>
         </div>
