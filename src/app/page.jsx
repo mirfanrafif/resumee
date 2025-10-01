@@ -77,23 +77,44 @@ export default function Home() {
           <div className="space-y-6">
             <div className="space-y-4">
               <h3 className="text-2xl font-bold mb-4">Experiences</h3>
-              {profile.experiences.map((experience, index) => (
-                <div key={index}>
-                  <h4 className="font-bold underline">
-                    {experience.companyName}
-                  </h4>
-                  <p>{experience.role}</p>
-                  <p>
-                    {experience.startYear} - {experience.endYear}
-                  </p>
-                  <p>{experience.contract}</p>
-                  <ul className="list-disc list-inside">
-                    {experience.description.map((desc, index) => (
-                      <li key={index}>{desc}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="absolute left-2 top-2 bottom-0 w-0.5 bg-neutral-300 dark:bg-neutral-600 translate-x-[-1px]"></div>
+
+                {profile.experiences.map((experience, index) => (
+                  <div
+                    key={index}
+                    className="relative flex items-start gap-6 pb-8 last:pb-0"
+                  >
+                    {/* Timeline dot */}
+                    <div className="relative z-10 flex-shrink-0 w-4 h-4 bg-neutral-600 dark:bg-neutral-400 rounded-full mt-1.5"></div>
+
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h4 className="font-bold">
+                        <a
+                          href={experience.website}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                        >
+                          {experience.companyName}
+                        </a>
+                      </h4>
+                      <p>{experience.role}</p>
+                      <p>
+                        {experience.startYear} - {experience.endYear}
+                      </p>
+                      <p>{experience.contract}</p>
+                      <ul className="list-disc list-inside">
+                        {experience.description.map((desc, index) => (
+                          <li key={index}>{desc}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="space-y-4">
@@ -279,8 +300,10 @@ const profile = {
       startYear: "September 2024",
       endYear: "Present",
       contract: "Full-Time",
+      website: "https://www.cinema21.co.id",
       description: [
         "Developing and maintaining the Cinema XXI Manager App to manage the cinema and the movies.",
+        "Developing Outlet Web App to handle the outlet operations.",
       ],
     },
     {
@@ -289,6 +312,7 @@ const profile = {
       startYear: "March 2023",
       endYear: "September 2024",
       contract: "Full-Time",
+      website: "https://deltahq.com",
       description: [
         "Developing and maintaining the Property Management System and Vendor Management System to setup property and products for the customers.",
         "Setting up the payment gateway for the customers to pay the bills.",
@@ -302,6 +326,7 @@ const profile = {
       startYear: "September 2022",
       endYear: "March 2023",
       contract: "Full-Time",
+      website: "https://www.geniebook.com",
       description: [
         "Developing and maintaining the Geniebook App that help the students to learn better.",
       ],
@@ -312,6 +337,7 @@ const profile = {
       startYear: "March 2022",
       endYear: "Novenber 2022",
       contract: "Freelance",
+      website: "https://sprado.co",
       description: [
         "Developing and maintaining the Chatbot App that connect the sales with the customers.",
       ],
@@ -322,6 +348,7 @@ const profile = {
       startYear: "June 2021",
       endYear: "Aug 2021",
       contract: "Internship",
+      website: "https://www.unitedtractors.com",
       description: ["Enhancing the Promition Portal App"],
     },
   ],

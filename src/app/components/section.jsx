@@ -6,7 +6,7 @@ export default function Section({ children, className = "", id, ...props }) {
       className={`min-h-screen flex flex-col justify-center py-8 ${className}`}
       {...props}
     >
-      <div className="w-full max-w-[1440px] mx-auto p-8">{children}</div>
+      <div className="w-full max-w-[1440px] mx-auto pl-8 pr-16">{children}</div>
     </section>
   );
 }

@@ -14,13 +14,27 @@ const sections = [
 export const SideNavigation = () => {
   const [activeSection, setActiveSection] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [showLabels, setShowLabels] = useState(false);
 
   useEffect(() => {
+    let scrollTimeout;
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       // Show navigation after scrolling past hero section
       setIsVisible(window.scrollY > 200);
+
+      // Show labels while scrolling
+      setShowLabels(true);
+
+      // Clear existing timeout
+      clearTimeout(scrollTimeout);
+
+      // Hide labels after 500ms of no scrolling
+      scrollTimeout = setTimeout(() => {
+        setShowLabels(false);
+      }, 500);
 
       // Find active section
       const sectionElements = sections.map((section) =>
@@ -40,7 +54,10 @@ export const SideNavigation = () => {
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // Initial check
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -67,30 +84,41 @@ export const SideNavigation = () => {
     config: { tension: 300, friction: 30 },
   });
 
+  const labelsAnimation = useSpring({
+    opacity: showLabels ? 1 : 0,
+    transform: showLabels ? "translateX(0px)" : "translateX(10px)",
+    config: { tension: 280, friction: 25 },
+  });
+
   return (
     <animated.nav
       style={navAnimation}
-      className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 space-y-3"
+      className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 space-y-4 flex flex-col items-end"
+      onMouseEnter={() => setShowLabels(true)}
+      onMouseLeave={() => setShowLabels(false)}
     >
       {sections.map((section, index) => (
-        <div key={section.id} className="relative group">
+        <div key={section.id} className="flex items-center gap-3 group">
+          <animated.div style={labelsAnimation} className="text-right">
+            <span
+              className={`text-sm font-medium transition-colors duration-300 ${
+                activeSection === index
+                  ? "text-neutral-900 dark:text-white"
+                  : "text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-800 dark:group-hover:text-neutral-300"
+              }`}
+            >
+              {section.label}
+            </span>
+          </animated.div>
           <button
             onClick={() => scrollToSection(section.id)}
-            className={`w-3 h-3 rounded-full border-2 transition-all duration-300 hover:scale-125 ${
+            className={`w-3 h-3 rounded-full border-2 transition-all duration-300 hover:scale-125 flex-shrink-0 ${
               activeSection === index
-                ? "bg-neutral-900 border-neutral-900"
-                : "bg-transparent border-neutral-400 hover:border-neutral-600"
+                ? "bg-neutral-900 border-neutral-900 dark:bg-white dark:border-white"
+                : "bg-transparent border-neutral-400 hover:border-neutral-600 dark:border-neutral-500 dark:hover:border-neutral-400"
             }`}
             aria-label={`Go to ${section.label}`}
           />
-
-          {/* Tooltip */}
-          <div className="absolute right-6 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-            <div className="bg-neutral-900 text-white px-3 py-1 rounded text-sm whitespace-nowrap">
-              {section.label}
-            </div>
-            <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-4 border-l-neutral-900 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
-          </div>
         </div>
       ))}
     </animated.nav>
