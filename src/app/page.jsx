@@ -1,3 +1,6 @@
+"use client";
+
+import React from "react";
 import {
   ArrowRight,
   Book,
@@ -14,169 +17,222 @@ import {
   School,
   Speaker,
 } from "lucide-react";
+import Section from "./components/section";
+import { BigTitle } from "./components/big-title";
+import { AnimatedGrid } from "./components/animated-grid";
+import { SideNavigation } from "./components/side-navigation";
 
 export default function Home() {
   return (
-    <div className="font-[family-name:var(--font-afacad)] max-w-[1024px] mx-auto my-8 space-y-8 px-4">
-      <div className="flex flex-row gap-4 items-center">
-        <img
-          src="https://avatars.githubusercontent.com/u/43906580?v=4"
-          alt="Avatar"
-          className="w-12 h-12 lg:h-24 lg:w-24 rounded-full"
-        />
+    <div className="font-[family-name:var(--font-afacad)] my-8 space-y-8">
+      <SideNavigation />
+      <Section id="hero" className="relative overflow-hidden">
+        <AnimatedGrid />
+        <div className="space-y-8 relative z-10">
+          <BigTitle>
+            <h1 className="text-8xl font-bold">
+              Performance over <br />{" "}
+              <span className="font-serif">Aesthetics</span>
+            </h1>
+          </BigTitle>
+          <h3 className="max-w-lg">
+            Hello, My name is {profile.fullName}. I am a {profile.role}, but
+            mostly focused on Frontend Development. I am currently working in{" "}
+            {profile.experiences[0].companyName} as a{" "}
+            {profile.experiences[0].role}.
+          </h3>
+        </div>
+      </Section>
 
-        <div>
-          <h1 className="font-bold">{profile.fullName}</h1>
-          <h3>{profile.role}</h3>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div className="flex flex-row gap-2 items-center">
-          <Pin size={16} />
-          <h2 className="font-bold">Location</h2>
-        </div>
-        <p>{profile.location}</p>
-      </div>
-
-      <div className="space-y-4">
-        <div className="flex flex-row gap-2 items-center">
-          <FileStack size={16} />
-          <h2 className="font-bold">Main Stack</h2>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          {profile.mainStack.map((stack, index) => (
-            <div key={index}>- {stack}</div>
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div className="flex flex-row gap-2 items-center">
-          <Globe size={16} />
-          <h2 className="font-bold">Socials</h2>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          {profile.socials.map((social, index) => (
-            <a
-              key={index}
-              href={social.url}
-              target="_blank"
-              rel="noreferrer"
-              className="group flex flex-row items-center gap-2 underline"
-            >
-              {social.icon}
-              <span>{social.name}</span>
-              <div className="opacity-0 group-hover:opacity-100 -translate-x-4 transition-all duration-200 group-hover:translate-x-0">
-                <ArrowRight size={16} />
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div className="flex flex-row gap-2 items-center">
-          <School size={16} />
-          <h2 className="font-bold">Education</h2>
-        </div>
-        <div className="space-y-4">
-          {profile.education.map((education, index) => (
-            <div key={index}>
-              <h3 className="font-bold underline">{education.institution}</h3>
-              <p>{education.major}</p>
-              <p>{education.degree}</p>
-              <p>
-                {education.startYear} - {education.endYear}
-              </p>
-              {education.gpa && <p>GPA: {education.gpa}</p>}
+      <Section id="stack" className="bg-neutral-900">
+        <div className="space-y-8">
+          <BigTitle>
+            <div className="flex flex-row gap-2 items-center">
+              <h2 className="font-bold text-8xl">
+                <FileStack size={64} className="inline-block mr-4" />
+                Main Stack
+              </h2>
             </div>
-          ))}
+          </BigTitle>
+          <div className="flex flex-wrap gap-3">
+            {profile.mainStack.map((stack, index) => (
+              <span
+                key={index}
+                className="px-4 py-2 bg-transparent text-white border border-white rounded-full text-sm font-medium hover:bg-white hover:text-neutral-900 transition-all duration-200 cursor-default"
+              >
+                {stack}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      </Section>
 
-      <div className="space-y-4">
-        <div className="flex flex-row gap-2 items-center">
-          <Hotel size={16} />
-          <h2 className="font-bold">Experiences</h2>
-        </div>
-
-        <div className="space-y-4">
-          {profile.experiences.map((experience, index) => (
-            <div key={index}>
-              <h3 className="font-bold underline">{experience.companyName}</h3>
-              <p>{experience.role}</p>
-              <p>
-                {experience.startYear} - {experience.endYear}
-              </p>
-              <p>{experience.contract}</p>
-              <ul className="list-disc list-inside">
-                {experience.description.map((desc, index) => (
-                  <li key={index}>{desc}</li>
-                ))}
-              </ul>
+      <Section id="experience">
+        <div className="space-y-10">
+          <BigTitle>
+            <div className="flex flex-row gap-2 items-center">
+              <Hotel size={64} />
+              <h2 className="font-bold text-8xl">Experiences & Projects</h2>
             </div>
-          ))}
-        </div>
-      </div>
+          </BigTitle>
 
-      <div className="space-y-4">
-        <div className="flex flex-row gap-2 items-center">
-          <Megaphone size={16} />
-          <h2 className="font-bold">Volunteer</h2>
-        </div>
-
-        <div className="space-y-4">
-          {profile.volunteer.map((volunteer, index) => (
-            <div key={index}>
-              <h3 className="font-bold underline">{volunteer.organization}</h3>
-              <p>{volunteer.role}</p>
-              <p>
-                {volunteer.startYear} - {volunteer.endYear}
-              </p>
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold mb-4">Experiences</h3>
+              {profile.experiences.map((experience, index) => (
+                <div key={index}>
+                  <h4 className="font-bold underline">
+                    {experience.companyName}
+                  </h4>
+                  <p>{experience.role}</p>
+                  <p>
+                    {experience.startYear} - {experience.endYear}
+                  </p>
+                  <p>{experience.contract}</p>
+                  <ul className="list-disc list-inside">
+                    {experience.description.map((desc, index) => (
+                      <li key={index}>{desc}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="space-y-4">
-        <div className="flex flex-row gap-2 items-center">
-          <Construction size={16} />
-          <h2 className="font-bold">Projects</h2>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold mb-4">Projects</h3>
+              {profile.projects.map((project, index) => (
+                <div key={index}>
+                  <h4 className="font-bold underline">{project.projectName}</h4>
+                  <p>{project.description}</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {project.stack.map((stack, index) => (
+                      <div key={index}>- {stack}</div>
+                    ))}
+                  </div>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline"
+                  >
+                    {project.url}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+      </Section>
 
-        <div className="space-y-4">
-          {profile.projects.map((project, index) => (
-            <div key={index}>
-              <h3 className="font-bold underline">{project.projectName}</h3>
-              <p>{project.description}</p>
-              <div className="grid grid-cols-3 gap-2">
-                {project.stack.map((stack, index) => (
-                  <div key={index}>- {stack}</div>
-                ))}
-              </div>
+      <Section id="education" className="bg-neutral-900">
+        <div className="space-y-10">
+          <BigTitle>
+            <div className="flex flex-row gap-2 items-center ">
+              <School size={64} />
+              <h2 className="font-bold text-8xl">Education & Volunteer</h2>
+            </div>
+          </BigTitle>
+
+          <div className="flex flex-col lg:flex-row lg:gap-12 space-y-6 lg:space-y-0">
+            <div className="space-y-4 flex-1">
+              <h3 className="text-2xl font-bold mb-4">Education</h3>
+              {profile.education.map((education, index) => (
+                <div key={index}>
+                  <h4 className="font-bold underline">
+                    {education.institution}
+                  </h4>
+                  <p>{education.major}</p>
+                  <p>{education.degree}</p>
+                  <p>
+                    {education.startYear} - {education.endYear}
+                  </p>
+                  {education.gpa && <p>GPA: {education.gpa}</p>}
+                </div>
+              ))}
+            </div>
+
+            <div className="space-y-4 flex-1">
+              <h3 className="text-2xl font-bold mb-4">Volunteer</h3>
+              {profile.volunteer.map((volunteer, index) => (
+                <div key={index}>
+                  <h4 className="font-bold underline">
+                    {volunteer.organization}
+                  </h4>
+                  <p>{volunteer.role}</p>
+                  <p>
+                    {volunteer.startYear} - {volunteer.endYear}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="socials">
+        <div className="space-y-10">
+          <BigTitle>
+            <div className="flex flex-row gap-2 items-center">
+              <Globe size={64} />
+              <h2 className="font-bold text-8xl">Socials</h2>
+            </div>
+          </BigTitle>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
+            {profile.socials.map((social, index) => (
               <a
-                href={project.url}
+                key={index}
+                href={social.url}
                 target="_blank"
                 rel="noreferrer"
-                className="underline"
+                className="group flex flex-col items-center justify-center p-8 border-2 border-neutral-300 rounded-2xl hover:border-neutral-600 hover:bg-neutral-50 transition-all duration-300 min-h-[200px]"
               >
-                {project.url}
+                <div className="mb-4 text-white group-hover:text-black transition-colors duration-300">
+                  {React.cloneElement(social.icon, { size: 48 })}
+                </div>
+                <span className="text-xl font-medium text-white group-hover:text-black transition-colors duration-300">
+                  {social.name}
+                </span>
+                <div className="mt-3 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                  <ArrowRight
+                    size={20}
+                    className="text-white group-hover:text-black"
+                  />
+                </div>
               </a>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </Section>
     </div>
   );
 }
 
 const profile = {
   fullName: "Moch. Irfan Rafif",
-  role: "Frontend Developer",
+  role: "Fullstack Developer",
   email: "mirfanrafif17@gmail.com",
   location: "Malang, East Java, Indonesia",
-  mainStack: ["React", "Next.js", "Tailwind CSS", "Flutter", "Android"],
+  mainStack: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Tailwind CSS",
+    "Node.js",
+    "Flutter",
+    "Android",
+    "PHP",
+    "Laravel",
+    "Dart",
+    "Nest.js",
+    "MongoDB",
+    "Git",
+    "REST APIs",
+    "GitHub Actions",
+    "CI/CD",
+    "Shell Scripting",
+    "Docker",
+  ],
   socials: [
     {
       icon: <Github size={16} />,
