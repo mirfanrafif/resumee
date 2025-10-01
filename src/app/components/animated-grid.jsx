@@ -31,7 +31,7 @@ export const AnimatedGrid = () => {
 
           // Create a pulsing effect based on time and distance
           const pulse = Math.sin(time * 0.002 + distance * 0.01) * 0.5 + 0.5;
-          const opacity = 0.2 + pulse * 0.25;
+          const opacity = 0.1 + pulse * 0.2;
 
           ctx.fillStyle = `rgba(100, 100, 100, ${opacity})`;
           ctx.beginPath();
