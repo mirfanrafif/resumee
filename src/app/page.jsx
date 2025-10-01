@@ -29,15 +29,17 @@ export default function Home() {
         <div className="space-y-8 relative z-10">
           <BigTitle>
             <h1 className="text-5xl lg:text-8xl font-bold">
-              Performance over <br />{" "}
+              Performance Over <br />{" "}
               <span className="font-serif text-4xl lg:text-7xl">
                 Aesthetics
               </span>
             </h1>
           </BigTitle>
           <h3 className="max-w-lg">
-            Hello, My name is {profile.fullName}. I am a {profile.role}, but
-            mostly focused on Frontend Development. I am currently working in{" "}
+            Hello, my name is {profile.fullName}. I am a {profile.role}, mainly
+            focused on Frontend Development. I specialize in React, Next.js,
+            TypeScript, and Flutter for building modern web and mobile
+            applications. I am currently working at{" "}
             {profile.experiences[0].companyName} as a{" "}
             {profile.experiences[0].role}.
           </h3>
@@ -50,7 +52,7 @@ export default function Home() {
             <div className="flex flex-row gap-2 items-center">
               <h2 className="font-bold text-5xl lg:text-8xl">
                 <FileStack size={64} className="inline-block mr-4" />
-                Tech Stacks
+                Tech Stack
               </h2>
             </div>
           </BigTitle>
@@ -73,14 +75,14 @@ export default function Home() {
             <div className="flex flex-row gap-2 items-center">
               <Hotel size={64} />
               <h2 className="font-bold text-5xl lg:text-8xl">
-                Experiences & Projects
+                Experience & Projects
               </h2>
             </div>
           </BigTitle>
 
           <div className="space-y-6">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold mb-4">Experiences</h3>
+              <h3 className="text-2xl font-bold mb-4">Experience</h3>
               <div className="relative">
                 {/* Timeline line */}
                 <div className="absolute left-2 top-2 bottom-0 w-0.5 bg-neutral-300 dark:bg-neutral-600 translate-x-[-1px]"></div>
@@ -122,7 +124,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold mb-4">Projects</h3>
+              <h3 className="text-2xl font-bold mb-4">Project</h3>
               {profile.projects.map((project, index) => (
                 <div key={index}>
                   <h4 className="font-bold underline">{project.projectName}</h4>
@@ -153,7 +155,7 @@ export default function Home() {
             <div className="flex flex-row gap-2 items-center ">
               <School size={64} />
               <h2 className="font-bold text-5xl lg:text-8xl">
-                Education & Volunteer
+                Education & Volunteering
               </h2>
             </div>
           </BigTitle>
@@ -177,7 +179,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-4 flex-1">
-              <h3 className="text-2xl font-bold mb-4">Volunteer</h3>
+              <h3 className="text-2xl font-bold mb-4">Volunteering</h3>
               {profile.volunteer.map((volunteer, index) => (
                 <div key={index}>
                   <h4 className="font-bold underline">
@@ -286,7 +288,7 @@ const profile = {
     {
       institution: "State Polytechnic of Malang",
       major: "Informatics Engineering",
-      degree: "Bachelor",
+      degree: "Bachelor's Degree",
       startYear: 2018,
       endYear: 2022,
       gpa: 3.6,
@@ -308,8 +310,8 @@ const profile = {
       contract: "Full-Time",
       website: "https://www.cinema21.co.id",
       description: [
-        "Developing and maintaining the Cinema XXI Manager App to manage the cinema and the movies.",
-        "Developing Outlet Web App to handle the outlet operations.",
+        "Developing and maintaining the Cinema XXI Manager App to manage cinemas and movies.",
+        "Developing the Outlet Web App to handle outlet operations.",
       ],
     },
     {
@@ -320,10 +322,10 @@ const profile = {
       contract: "Full-Time",
       website: "https://deltahq.com",
       description: [
-        "Developing and maintaining the Property Management System and Vendor Management System to setup property and products for the customers.",
-        "Setting up the payment gateway for the customers to pay the bills.",
-        "Leading the Frontend team to assign tasks and review the code.",
-        "Work with the Product Manager to discuss the features and the timeline.",
+        "Developed and maintained the Property Management System and Vendor Management System to set up properties and products for customers.",
+        "Integrated payment gateways for customer billing.",
+        "Led the frontend team, assigned tasks, and reviewed code.",
+        "Collaborated with the Product Manager to discuss features and timelines.",
       ],
     },
     {
@@ -334,34 +336,34 @@ const profile = {
       contract: "Full-Time",
       website: "https://www.geniebook.com",
       description: [
-        "Developing and maintaining the Geniebook App that help the students to learn better.",
+        "Developed and maintained the Geniebook App to help students learn better.",
       ],
     },
     {
       companyName: "Sprado.co",
       role: "Frontend & Mobile Developer",
       startYear: "March 2022",
-      endYear: "Novenber 2022",
+      endYear: "November 2022",
       contract: "Freelance",
       website: "https://sprado.co",
       description: [
-        "Developing and maintaining the Chatbot App that connect the sales with the customers.",
+        "Developed and maintained the Chatbot App that connects sales with customers.",
       ],
     },
     {
       companyName: "PT. United Tractors Tbk.",
       role: "Frontend Developer",
       startYear: "June 2021",
-      endYear: "Aug 2021",
+      endYear: "August 2021",
       contract: "Internship",
       website: "https://www.unitedtractors.com",
-      description: ["Enhancing the Promition Portal App"],
+      description: ["Enhanced the Promotion Portal App."],
     },
   ],
   volunteer: [
     {
       organization: "Workshop Riset Informatika",
-      role: "Lead at Miniclass UX",
+      role: "Lead, Miniclass UX",
       startYear: "November 2019",
       endYear: "November 2020",
     },
@@ -370,7 +372,7 @@ const profile = {
     {
       projectName: "Lokla",
       description:
-        "Lokla is a platform that bridge the developer and translator to help the developer to localize the app.",
+        "Lokla is a platform that bridges developers and translators to help developers localize their apps.",
       stack: ["React", "Next.js", "Tailwind CSS", "Nest.js", "MongoDB"],
       url: "https://lokla.mirfanrafif.my.id",
     },
