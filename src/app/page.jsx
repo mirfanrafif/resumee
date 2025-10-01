@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   ArrowRight,
@@ -24,7 +22,7 @@ import { SideNavigation } from "./components/side-navigation";
 
 export default function Home() {
   return (
-    <div className="font-[family-name:var(--font-afacad)] my-8 space-y-8">
+    <div className="font-[family-name:var(--font-afacad)]">
       <SideNavigation />
       <Section id="hero" className="relative overflow-hidden">
         <AnimatedGrid />
@@ -32,7 +30,7 @@ export default function Home() {
           <BigTitle>
             <h1 className="text-8xl font-bold">
               Performance over <br />{" "}
-              <span className="font-serif">Aesthetics</span>
+              <span className="font-serif text-7xl">Aesthetics</span>
             </h1>
           </BigTitle>
           <h3 className="max-w-lg">
@@ -44,18 +42,18 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="stack" className="bg-neutral-900">
+      <Section id="stack" className="bg-neutral-900 text-white">
         <div className="space-y-8">
           <BigTitle>
             <div className="flex flex-row gap-2 items-center">
               <h2 className="font-bold text-8xl">
                 <FileStack size={64} className="inline-block mr-4" />
-                Main Stack
+                Tech Stacks
               </h2>
             </div>
           </BigTitle>
           <div className="flex flex-wrap gap-3">
-            {profile.mainStack.map((stack, index) => (
+            {profile.techStack.map((stack, index) => (
               <span
                 key={index}
                 className="px-4 py-2 bg-transparent text-white border border-white rounded-full text-sm font-medium hover:bg-white hover:text-neutral-900 transition-all duration-200 cursor-default"
@@ -124,7 +122,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="education" className="bg-neutral-900">
+      <Section id="education" className="bg-neutral-900 text-white">
         <div className="space-y-10">
           <BigTitle>
             <div className="flex flex-row gap-2 items-center ">
@@ -186,16 +184,16 @@ export default function Home() {
                 rel="noreferrer"
                 className="group flex flex-col items-center justify-center p-8 border-2 border-neutral-300 rounded-2xl hover:border-neutral-600 hover:bg-neutral-50 transition-all duration-300 min-h-[200px]"
               >
-                <div className="mb-4 text-white group-hover:text-black transition-colors duration-300">
+                <div className="mb-4 dark:text-white dark:group-hover:text-black transition-colors duration-300">
                   {React.cloneElement(social.icon, { size: 48 })}
                 </div>
-                <span className="text-xl font-medium text-white group-hover:text-black transition-colors duration-300">
+                <span className="text-xl font-medium dark:text-white dark:group-hover:text-black transition-colors duration-300">
                   {social.name}
                 </span>
                 <div className="mt-3 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                   <ArrowRight
                     size={20}
-                    className="text-white group-hover:text-black"
+                    className="text-neutral-600 group-hover:text-black dark:text-white dark:group-hover:text-black"
                   />
                 </div>
               </a>
@@ -212,7 +210,7 @@ const profile = {
   role: "Fullstack Developer",
   email: "mirfanrafif17@gmail.com",
   location: "Malang, East Java, Indonesia",
-  mainStack: [
+  techStack: [
     "React",
     "Next.js",
     "TypeScript",
@@ -223,6 +221,8 @@ const profile = {
     "Android",
     "PHP",
     "Laravel",
+    "MySQL",
+    "PostgreSQL",
     "Dart",
     "Nest.js",
     "MongoDB",
