@@ -28,9 +28,11 @@ export default function Home() {
         <AnimatedGrid />
         <div className="space-y-8 relative z-10">
           <BigTitle>
-            <h1 className="text-8xl font-bold">
+            <h1 className="text-5xl lg:text-8xl font-bold">
               Performance over <br />{" "}
-              <span className="font-serif text-7xl">Aesthetics</span>
+              <span className="font-serif text-4xl lg:text-7xl">
+                Aesthetics
+              </span>
             </h1>
           </BigTitle>
           <h3 className="max-w-lg">
@@ -46,7 +48,7 @@ export default function Home() {
         <div className="space-y-8">
           <BigTitle>
             <div className="flex flex-row gap-2 items-center">
-              <h2 className="font-bold text-8xl">
+              <h2 className="font-bold text-5xl lg:text-8xl">
                 <FileStack size={64} className="inline-block mr-4" />
                 Tech Stacks
               </h2>
@@ -70,7 +72,9 @@ export default function Home() {
           <BigTitle>
             <div className="flex flex-row gap-2 items-center">
               <Hotel size={64} />
-              <h2 className="font-bold text-8xl">Experiences & Projects</h2>
+              <h2 className="font-bold text-5xl lg:text-8xl">
+                Experiences & Projects
+              </h2>
             </div>
           </BigTitle>
 
@@ -148,7 +152,9 @@ export default function Home() {
           <BigTitle>
             <div className="flex flex-row gap-2 items-center ">
               <School size={64} />
-              <h2 className="font-bold text-8xl">Education & Volunteer</h2>
+              <h2 className="font-bold text-5xl lg:text-8xl">
+                Education & Volunteer
+              </h2>
             </div>
           </BigTitle>
 
@@ -193,7 +199,7 @@ export default function Home() {
           <BigTitle>
             <div className="flex flex-row gap-2 items-center">
               <Globe size={64} />
-              <h2 className="font-bold text-8xl">Socials</h2>
+              <h2 className="font-bold text-5xl lg:text-8xl">Socials</h2>
             </div>
           </BigTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
