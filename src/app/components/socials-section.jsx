@@ -5,7 +5,10 @@ import { BigTitle } from "./big-title";
 
 export const SocialsSection = ({ socials }) => {
   return (
-    <Section id="socials">
+    <Section
+      id="socials"
+      className="bg-neutral-100 dark:bg-neutral-900 dark:text-white"
+    >
       <div className="space-y-10">
         <BigTitle>
           <div className="flex flex-row items-center gap-2">

@@ -5,7 +5,7 @@ import { BigTitle } from "./big-title";
 
 export const EducationSection = ({ education, volunteer }) => {
   return (
-    <Section id="education" className="bg-neutral-900 text-white">
+    <Section id="education">
       <div className="space-y-10">
         <BigTitle>
           <div className="flex flex-row items-center gap-2">
