@@ -1,4 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import bundleAnalyzer from "@next/bundle-analyzer";
 
-export default nextConfig;
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Enable webpack bundle analyzer
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
+};
+
+export default withBundleAnalyzer(nextConfig);
