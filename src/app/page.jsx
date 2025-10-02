@@ -24,11 +24,11 @@ export default function Home() {
   return (
     <div className="font-[family-name:var(--font-afacad)]">
       <SideNavigation />
+      <AnimatedGrid />
       <Section id="hero" className="relative overflow-hidden">
-        <AnimatedGrid />
-        <div className="space-y-8 relative z-10">
+        <div className="relative z-10 space-y-8">
           <BigTitle>
-            <h1 className="text-5xl lg:text-8xl font-bold">
+            <h1 className="text-5xl font-bold lg:text-8xl">
               Performance Over <br />{" "}
               <span className="font-serif text-4xl lg:text-7xl">
                 Aesthetics
@@ -46,12 +46,15 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="stack" className="bg-neutral-900 text-white">
+      <Section
+        id="stack"
+        className="bg-neutral-100 dark:bg-neutral-900 dark:text-white"
+      >
         <div className="space-y-8">
           <BigTitle>
-            <div className="flex flex-row gap-2 items-center">
-              <h2 className="font-bold text-5xl lg:text-8xl">
-                <FileStack size={64} className="inline-block mr-4" />
+            <div className="flex flex-row items-center gap-2">
+              <h2 className="text-5xl font-bold lg:text-8xl">
+                <FileStack size={64} className="mr-4 inline-block" />
                 Tech Stack
               </h2>
             </div>
@@ -60,7 +63,7 @@ export default function Home() {
             {profile.techStack.map((stack, index) => (
               <span
                 key={index}
-                className="px-4 py-2 bg-transparent text-white border border-white rounded-full text-sm font-medium hover:bg-white hover:text-neutral-900 transition-all duration-200 cursor-default"
+                className="cursor-default rounded-full border border-black bg-transparent px-4 py-2 text-sm font-medium transition-all duration-200 hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-neutral-900"
               >
                 {stack}
               </span>
@@ -72,15 +75,15 @@ export default function Home() {
       <Section id="experiences">
         <div className="space-y-10">
           <BigTitle>
-            <div className="flex flex-row gap-2 items-center">
+            <div className="flex flex-row items-center gap-2">
               <Hotel size={64} />
-              <h2 className="font-bold text-5xl lg:text-8xl">Experiences</h2>
+              <h2 className="text-5xl font-bold lg:text-8xl">Experiences</h2>
             </div>
           </BigTitle>
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-2 top-2 bottom-0 w-0.5 bg-neutral-300 dark:bg-neutral-600 translate-x-[-1px]"></div>
+            <div className="absolute bottom-0 left-2 top-2 w-0.5 translate-x-[-1px] bg-neutral-300 dark:bg-neutral-600"></div>
 
             {profile.experiences.map((experience, index) => (
               <div
@@ -88,7 +91,7 @@ export default function Home() {
                 className="relative flex items-start gap-6 pb-8 last:pb-0"
               >
                 {/* Timeline dot */}
-                <div className="relative z-10 flex-shrink-0 w-4 h-4 bg-neutral-600 dark:bg-neutral-400 rounded-full mt-1.5"></div>
+                <div className="relative z-10 mt-1.5 h-4 w-4 flex-shrink-0 rounded-full bg-neutral-600 dark:bg-neutral-400"></div>
 
                 {/* Content */}
                 <div className="flex-1">
@@ -97,7 +100,7 @@ export default function Home() {
                       href={experience.website}
                       target="_blank"
                       rel="noreferrer"
-                      className="underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                      className="underline transition-colors duration-200 hover:text-blue-600 dark:hover:text-blue-400"
                     >
                       {experience.companyName}
                     </a>
@@ -107,7 +110,7 @@ export default function Home() {
                     {experience.startYear} - {experience.endYear}
                   </p>
                   <p>{experience.contract}</p>
-                  <ul className="list-disc list-inside">
+                  <ul className="list-inside list-disc">
                     {experience.description.map((desc, index) => (
                       <li key={index}>{desc}</li>
                     ))}
@@ -119,27 +122,30 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="projects" className="bg-neutral-900 text-white">
+      <Section
+        id="projects"
+        className="bg-neutral-100 dark:bg-neutral-900 dark:text-white"
+      >
         <div className="space-y-10">
           <BigTitle>
-            <div className="flex flex-row gap-2 items-center">
+            <div className="flex flex-row items-center gap-2">
               <Construction size={64} />
-              <h2 className="font-bold text-5xl lg:text-8xl">Projects</h2>
+              <h2 className="text-5xl font-bold lg:text-8xl">Projects</h2>
             </div>
           </BigTitle>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {profile.projects.map((project, index) => (
               <div
                 key={index}
-                className="border-2 border-neutral-600 rounded-xl p-6 hover:border-neutral-400 transition-all duration-300 hover:shadow-lg bg-neutral-800/50"
+                className="rounded-xl border-2 border-black bg-transparent p-6 transition-all duration-300 hover:border-neutral-400 hover:shadow-lg dark:border-neutral-600 dark:bg-neutral-800/50"
               >
-                <h4 className="font-bold text-lg mb-3 text-white">
+                <h4 className="mb-3 text-lg font-bold dark:text-white">
                   {project.url ? (
                     <a
                       href={project.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="underline hover:text-blue-400 transition-colors duration-200"
+                      className="underline transition-colors duration-200 hover:text-blue-400"
                     >
                       {project.projectName}
                     </a>
@@ -147,14 +153,14 @@ export default function Home() {
                     project.projectName
                   )}
                 </h4>
-                <p className="text-neutral-300 mb-4 leading-relaxed">
+                <p className="mb-4 leading-relaxed text-neutral-600 dark:text-neutral-300">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {project.stack.map((stack, stackIndex) => (
                     <span
                       key={stackIndex}
-                      className="px-4 py-2 bg-transparent text-white border border-white rounded-full text-sm font-medium hover:bg-white hover:text-neutral-900 transition-all duration-200 cursor-default"
+                      className="cursor-default rounded-full border border-black bg-transparent px-4 py-2 text-sm font-medium transition-all duration-200 hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-neutral-900"
                     >
                       {stack}
                     </span>
@@ -169,17 +175,17 @@ export default function Home() {
       <Section id="education">
         <div className="space-y-10">
           <BigTitle>
-            <div className="flex flex-row gap-2 items-center ">
+            <div className="flex flex-row items-center gap-2">
               <School size={64} />
-              <h2 className="font-bold text-5xl lg:text-8xl">
+              <h2 className="text-5xl font-bold lg:text-8xl">
                 Education & Volunteering
               </h2>
             </div>
           </BigTitle>
 
-          <div className="flex flex-col lg:flex-row lg:gap-12 space-y-6 lg:space-y-0">
-            <div className="space-y-4 flex-1">
-              <h3 className="text-2xl font-bold mb-4">Education</h3>
+          <div className="flex flex-col space-y-6 lg:flex-row lg:gap-12 lg:space-y-0">
+            <div className="flex-1 space-y-4">
+              <h3 className="mb-4 text-2xl font-bold">Education</h3>
               {profile.education.map((education, index) => (
                 <div key={index}>
                   <h4 className="font-bold underline">
@@ -195,8 +201,8 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="space-y-4 flex-1">
-              <h3 className="text-2xl font-bold mb-4">Volunteering</h3>
+            <div className="flex-1 space-y-4">
+              <h3 className="mb-4 text-2xl font-bold">Volunteering</h3>
               {profile.volunteer.map((volunteer, index) => (
                 <div key={index}>
                   <h4 className="font-bold underline">
@@ -213,32 +219,35 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="socials" className="bg-neutral-900 text-white">
+      <Section
+        id="socials"
+        className="bg-neutral-100 dark:bg-neutral-900 dark:text-white"
+      >
         <div className="space-y-10">
           <BigTitle>
-            <div className="flex flex-row gap-2 items-center">
+            <div className="flex flex-row items-center gap-2">
               <Globe size={64} />
-              <h2 className="font-bold text-5xl lg:text-8xl">
+              <h2 className="text-5xl font-bold lg:text-8xl">
                 Have a look at my
               </h2>
             </div>
           </BigTitle>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
             {profile.socials.map((social, index) => (
               <a
                 key={index}
                 href={social.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex flex-col items-center justify-center p-8 border-2 border-neutral-300 rounded-2xl hover:border-neutral-600 hover:bg-neutral-50 transition-all duration-300 min-h-[200px]"
+                className="group flex min-h-[200px] flex-col items-center justify-center rounded-2xl border-2 border-neutral-300 p-8 transition-all duration-300 hover:border-neutral-600 hover:bg-neutral-50"
               >
-                <div className="mb-4 dark:text-white dark:group-hover:text-black transition-colors duration-300">
+                <div className="mb-4 transition-colors duration-300 dark:text-white dark:group-hover:text-black">
                   {React.cloneElement(social.icon, { size: 48 })}
                 </div>
-                <span className="text-xl font-medium dark:text-white dark:group-hover:text-black transition-colors duration-300">
+                <span className="text-xl font-medium transition-colors duration-300 dark:text-white dark:group-hover:text-black">
                   {social.name}
                 </span>
-                <div className="mt-3 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <div className="mt-3 translate-y-2 transform opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   <ArrowRight
                     size={20}
                     className="text-neutral-600 group-hover:text-black dark:text-white dark:group-hover:text-black"

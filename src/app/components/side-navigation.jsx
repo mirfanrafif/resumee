@@ -94,18 +94,18 @@ export const SideNavigation = () => {
   return (
     <animated.nav
       style={navAnimation}
-      className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 space-y-4 flex flex-col items-end"
+      className="fixed right-6 top-1/2 z-50 flex -translate-y-1/2 transform flex-col items-end space-y-4"
       onMouseEnter={() => setShowLabels(true)}
       onMouseLeave={() => setShowLabels(false)}
     >
       {sections.map((section, index) => (
-        <div key={section.id} className="flex items-center gap-3 group">
+        <div key={section.id} className="group flex items-center gap-3">
           <animated.div style={labelsAnimation} className="text-right">
             <span
               className={`text-sm font-medium transition-colors duration-300 ${
                 activeSection === index
                   ? "text-neutral-900 dark:text-white"
-                  : "text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-800 dark:group-hover:text-neutral-300"
+                  : "text-neutral-600 group-hover:text-neutral-800 dark:text-neutral-400 dark:group-hover:text-neutral-300"
               }`}
             >
               {section.label}
@@ -113,10 +113,10 @@ export const SideNavigation = () => {
           </animated.div>
           <button
             onClick={() => scrollToSection(section.id)}
-            className={`w-3 h-3 rounded-full border-2 transition-all duration-300 hover:scale-125 flex-shrink-0 ${
+            className={`h-3 w-3 flex-shrink-0 rounded-full border-2 transition-all duration-300 hover:scale-125 ${
               activeSection === index
-                ? "bg-neutral-900 border-neutral-900 dark:bg-white dark:border-white"
-                : "bg-transparent border-neutral-400 hover:border-neutral-600 dark:border-neutral-500 dark:hover:border-neutral-400"
+                ? "border-neutral-900 bg-neutral-900 dark:border-white dark:bg-white"
+                : "border-neutral-400 bg-transparent hover:border-neutral-600 dark:border-neutral-500 dark:hover:border-neutral-400"
             }`}
             aria-label={`Go to ${section.label}`}
           />
