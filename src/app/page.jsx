@@ -69,87 +69,104 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="experience">
+      <Section id="experiences">
         <div className="space-y-10">
           <BigTitle>
             <div className="flex flex-row gap-2 items-center">
               <Hotel size={64} />
-              <h2 className="font-bold text-5xl lg:text-8xl">
-                Experience & Projects
-              </h2>
+              <h2 className="font-bold text-5xl lg:text-8xl">Experiences</h2>
             </div>
           </BigTitle>
 
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold mb-4">Experience</h3>
-              <div className="relative">
-                {/* Timeline line */}
-                <div className="absolute left-2 top-2 bottom-0 w-0.5 bg-neutral-300 dark:bg-neutral-600 translate-x-[-1px]"></div>
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-2 top-2 bottom-0 w-0.5 bg-neutral-300 dark:bg-neutral-600 translate-x-[-1px]"></div>
 
-                {profile.experiences.map((experience, index) => (
-                  <div
-                    key={index}
-                    className="relative flex items-start gap-6 pb-8 last:pb-0"
-                  >
-                    {/* Timeline dot */}
-                    <div className="relative z-10 flex-shrink-0 w-4 h-4 bg-neutral-600 dark:bg-neutral-400 rounded-full mt-1.5"></div>
+            {profile.experiences.map((experience, index) => (
+              <div
+                key={index}
+                className="relative flex items-start gap-6 pb-8 last:pb-0"
+              >
+                {/* Timeline dot */}
+                <div className="relative z-10 flex-shrink-0 w-4 h-4 bg-neutral-600 dark:bg-neutral-400 rounded-full mt-1.5"></div>
 
-                    {/* Content */}
-                    <div className="flex-1">
-                      <h4 className="font-bold">
-                        <a
-                          href={experience.website}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-                        >
-                          {experience.companyName}
-                        </a>
-                      </h4>
-                      <p>{experience.role}</p>
-                      <p>
-                        {experience.startYear} - {experience.endYear}
-                      </p>
-                      <p>{experience.contract}</p>
-                      <ul className="list-disc list-inside">
-                        {experience.description.map((desc, index) => (
-                          <li key={index}>{desc}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold mb-4">Project</h3>
-              {profile.projects.map((project, index) => (
-                <div key={index}>
-                  <h4 className="font-bold underline">{project.projectName}</h4>
-                  <p>{project.description}</p>
-                  <div className="grid grid-cols-3 gap-2">
-                    {project.stack.map((stack, index) => (
-                      <div key={index}>- {stack}</div>
+                {/* Content */}
+                <div className="flex-1">
+                  <h4 className="font-bold">
+                    <a
+                      href={experience.website}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                    >
+                      {experience.companyName}
+                    </a>
+                  </h4>
+                  <p>{experience.role}</p>
+                  <p>
+                    {experience.startYear} - {experience.endYear}
+                  </p>
+                  <p>{experience.contract}</p>
+                  <ul className="list-disc list-inside">
+                    {experience.description.map((desc, index) => (
+                      <li key={index}>{desc}</li>
                     ))}
-                  </div>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="underline"
-                  >
-                    {project.url}
-                  </a>
+                  </ul>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
 
-      <Section id="education" className="bg-neutral-900 text-white">
+      <Section id="projects" className="bg-neutral-900 text-white">
+        <div className="space-y-10">
+          <BigTitle>
+            <div className="flex flex-row gap-2 items-center">
+              <Construction size={64} />
+              <h2 className="font-bold text-5xl lg:text-8xl">Projects</h2>
+            </div>
+          </BigTitle>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {profile.projects.map((project, index) => (
+              <div
+                key={index}
+                className="border-2 border-neutral-600 rounded-xl p-6 hover:border-neutral-400 transition-all duration-300 hover:shadow-lg bg-neutral-800/50"
+              >
+                <h4 className="font-bold text-lg mb-3 text-white">
+                  {project.url ? (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline hover:text-blue-400 transition-colors duration-200"
+                    >
+                      {project.projectName}
+                    </a>
+                  ) : (
+                    project.projectName
+                  )}
+                </h4>
+                <p className="text-neutral-300 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {project.stack.map((stack, stackIndex) => (
+                    <span
+                      key={stackIndex}
+                      className="px-4 py-2 bg-transparent text-white border border-white rounded-full text-sm font-medium hover:bg-white hover:text-neutral-900 transition-all duration-200 cursor-default"
+                    >
+                      {stack}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section id="education">
         <div className="space-y-10">
           <BigTitle>
             <div className="flex flex-row gap-2 items-center ">
@@ -196,12 +213,14 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="socials">
+      <Section id="socials" className="bg-neutral-900 text-white">
         <div className="space-y-10">
           <BigTitle>
             <div className="flex flex-row gap-2 items-center">
               <Globe size={64} />
-              <h2 className="font-bold text-5xl lg:text-8xl">Socials</h2>
+              <h2 className="font-bold text-5xl lg:text-8xl">
+                Have a look at my
+              </h2>
             </div>
           </BigTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
@@ -370,11 +389,37 @@ const profile = {
   ],
   projects: [
     {
+      projectName: "DeltaEMS", // Experience Management System (Products / services that supporting hotel / property management)
+      description:
+        "DeltaEMS is an Experience Management System designed to streamline the operations on the supporting products and services for hotel and property management.",
+      stack: ["React", "Next.js", "Tailwind CSS", "Rest API"],
+      url: "https://ems.deltahq.com",
+    },
+    {
+      projectName: "DeltaPMS",
+      description:
+        "DeltaPMS is a comprehensive Property Management System designed to streamline property operations, enhance tenant experiences, and optimize management efficiency.",
+      stack: ["React", "Next.js", "Tailwind CSS", "Rest API"],
+      url: "https://pms.deltahq.com",
+    },
+    {
       projectName: "Lokla",
       description:
         "Lokla is a platform that bridges developers and translators to help developers localize their apps.",
       stack: ["React", "Next.js", "Tailwind CSS", "Nest.js", "MongoDB"],
       url: "https://lokla.mirfanrafif.my.id",
+    },
+    {
+      projectName: "Gilang Ekspedisi",
+      description:
+        "Gilang Ekspedisi is an app designed to streamline the process of managing shipments and deliveries for a live chicken from poultry farm to production factory, and from the production factory to the end consumer.",
+      stack: ["Flutter", "Dart"],
+    },
+    {
+      projectName: "Aloha Chatbot",
+      description:
+        "Aloha Chatbot is an innovative chatbot application designed to bridge communication between businesses and their customers, by assigning the customers to the relevant agents based on their inquiries.",
+      stack: ["Flutter", "Dart", "Nest.js", "MySQL", "Socket.io"],
     },
   ],
 };

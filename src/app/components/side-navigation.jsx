@@ -6,7 +6,8 @@ import { useSpring, animated } from "@react-spring/web";
 const sections = [
   { id: "hero", label: "Home" },
   { id: "stack", label: "Stack" },
-  { id: "experience", label: "Experience" },
+  { id: "experiences", label: "Experiences" },
+  { id: "projects", label: "Projects" },
   { id: "education", label: "Education" },
   { id: "socials", label: "Socials" },
 ];
